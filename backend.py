@@ -3,7 +3,7 @@ from typing import TypedDict, Annotated
 from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.memory import InMemorySaver
 
 from langgraph.graph.message import add_messages
 class ChatState(TypedDict):
@@ -29,7 +29,7 @@ def chat_node(state: ChatState):
 
     # Store response in the state
     return {"messages": [response]}
-checkpointer = MemorySaver()
+checkpointer = InMemorySaver()
 graph = StateGraph(ChatState)
 #add nodes
 graph.add_node('chat_node', chat_node)
