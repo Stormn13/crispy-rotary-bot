@@ -5,6 +5,8 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 from langgraph.checkpoint.memory import InMemorySaver
 
+config = {'configurable': {'thread_id': '1'}}
+
 from langgraph.graph.message import add_messages
 class ChatState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
